@@ -11,7 +11,7 @@ export default function Dashboard() {
       <div id="wd-dashboard-courses">
         <div className="wd-dashboard-course">
           <Link href="/Courses/1234" className="wd-dashboard-course-link">
-            <Image src="/images/reactjs.jpg" width={200} height={150} alt="React JS" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="React JS" />
             <div>
               <h5>CS1234 React JS</h5>
               <p className="wd-dashboard-course-title">Full Stack software developer</p>
@@ -22,7 +22,7 @@ export default function Dashboard() {
         
         <div className="wd-dashboard-course">
           <Link href="/Courses/2345" className="wd-dashboard-course-link">
-            <Image src="/images/nodejs.jpg" width={200} height={150} alt="Node.js" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="Node.js" />
             <div>
               <h5>CS2345 Node.js</h5>
               <p className="wd-dashboard-course-title">Backend development with Node.js</p>
@@ -33,7 +33,7 @@ export default function Dashboard() {
         
         <div className="wd-dashboard-course">
           <Link href="/Courses/3456" className="wd-dashboard-course-link">
-            <Image src="/images/mongodb.jpg" width={200} height={150} alt="MongoDB" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="MongoDB" />
             <div>
               <h5>CS3456 MongoDB</h5>
               <p className="wd-dashboard-course-title">Database management with MongoDB</p>
@@ -44,7 +44,7 @@ export default function Dashboard() {
         
         <div className="wd-dashboard-course">
           <Link href="/Courses/4567" className="wd-dashboard-course-link">
-            <Image src="/images/express.jpg" width={200} height={150} alt="Express" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="Express" />
             <div>
               <h5>CS4567 Express</h5>
               <p className="wd-dashboard-course-title">Web framework for Node.js</p>
@@ -55,7 +55,7 @@ export default function Dashboard() {
         
         <div className="wd-dashboard-course">
           <Link href="/Courses/5678" className="wd-dashboard-course-link">
-            <Image src="/images/javascript.jpg" width={200} height={150} alt="JavaScript" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="JavaScript" />
             <div>
               <h5>CS5678 JavaScript</h5>
               <p className="wd-dashboard-course-title">Programming language fundamentals</p>
@@ -66,7 +66,7 @@ export default function Dashboard() {
         
         <div className="wd-dashboard-course">
           <Link href="/Courses/6789" className="wd-dashboard-course-link">
-            <Image src="/images/css.jpg" width={200} height={150} alt="CSS" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="CSS" />
             <div>
               <h5>CS6789 CSS</h5>
               <p className="wd-dashboard-course-title">Styling web applications</p>
@@ -77,7 +77,7 @@ export default function Dashboard() {
         
         <div className="wd-dashboard-course">
           <Link href="/Courses/7890" className="wd-dashboard-course-link">
-            <Image src="/images/html.jpg" width={200} height={150} alt="HTML" />
+            <Image src="/images/teslabot.jpg" width={200} height={150} alt="HTML" />
             <div>
               <h5>CS7890 HTML</h5>
               <p className="wd-dashboard-course-title">Web page structure and content</p>
