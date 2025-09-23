@@ -101,108 +101,110 @@ export default async function AssignmentEditor({
       <br />
       
       <table>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-points">Points</label>
-          </td>
-          <td>
-            <input type="number" id="wd-points" defaultValue={assignment.points} />
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-group">Assignment Group</label>
-          </td>
-          <td>
-            <select id="wd-group" defaultValue={assignment.group}>
-              <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-              <option value="QUIZZES">QUIZZES</option>
-              <option value="EXAMS">EXAMS</option>
-              <option value="PROJECT">PROJECT</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-display-grade-as">Display Grade as</label>
-          </td>
-          <td>
-            <select id="wd-display-grade-as" defaultValue={assignment.displayGradeAs}>
-              <option value="Points">Points</option>
-              <option value="Percentage">Percentage</option>
-              <option value="Complete/Incomplete">Complete/Incomplete</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-submission-type">Submission Type</label>
-          </td>
-          <td>
-            <input 
-              type="checkbox" 
-              id="wd-text-entry" 
-              defaultChecked={assignment.submissionTypes.textEntry}
-            />
-            <label htmlFor="wd-text-entry">Text Entry</label><br />
-            <input 
-              type="checkbox" 
-              id="wd-website-url" 
-              defaultChecked={assignment.submissionTypes.websiteUrl}
-            />
-            <label htmlFor="wd-website-url">Website URL</label><br />
-            <input 
-              type="checkbox" 
-              id="wd-media-recordings" 
-              defaultChecked={assignment.submissionTypes.mediaRecordings}
-            />
-            <label htmlFor="wd-media-recordings">Media Recordings</label><br />
-            <input 
-              type="checkbox" 
-              id="wd-student-annotation" 
-              defaultChecked={assignment.submissionTypes.studentAnnotation}
-            />
-            <label htmlFor="wd-student-annotation">Student Annotation</label><br />
-            <input 
-              type="checkbox" 
-              id="wd-file-upload" 
-              defaultChecked={assignment.submissionTypes.fileUpload}
-            />
-            <label htmlFor="wd-file-upload">File Uploads</label>
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-assign-to">Assign to</label>
-          </td>
-          <td>
-            <input id="wd-assign-to" defaultValue={assignment.assignTo} />
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-due-date">Due</label>
-          </td>
-          <td>
-            <input type="date" id="wd-due-date" defaultValue={assignment.dueDate} />
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-available-from">Available from</label>
-          </td>
-          <td>
-            <input type="date" id="wd-available-from" defaultValue={assignment.availableFrom} />
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-available-until">Until</label>
-          </td>
-          <td>
-            <input type="date" id="wd-available-until" defaultValue={assignment.availableUntil} />
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-points">Points</label>
+            </td>
+            <td>
+              <input type="number" id="wd-points" defaultValue={assignment.points} />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-group">Assignment Group</label>
+            </td>
+            <td>
+              <select id="wd-group" defaultValue={assignment.group}>
+                <option value="ASSIGNMENTS">ASSIGNMENTS</option>
+                <option value="QUIZZES">QUIZZES</option>
+                <option value="EXAMS">EXAMS</option>
+                <option value="PROJECT">PROJECT</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-display-grade-as">Display Grade as</label>
+            </td>
+            <td>
+              <select id="wd-display-grade-as" defaultValue={assignment.displayGradeAs}>
+                <option value="Points">Points</option>
+                <option value="Percentage">Percentage</option>
+                <option value="Complete/Incomplete">Complete/Incomplete</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-submission-type">Submission Type</label>
+            </td>
+            <td>
+              <input 
+                type="checkbox" 
+                id="wd-text-entry" 
+                defaultChecked={assignment.submissionTypes.textEntry}
+              />
+              <label htmlFor="wd-text-entry">Text Entry</label><br />
+              <input 
+                type="checkbox" 
+                id="wd-website-url" 
+                defaultChecked={assignment.submissionTypes.websiteUrl}
+              />
+              <label htmlFor="wd-website-url">Website URL</label><br />
+              <input 
+                type="checkbox" 
+                id="wd-media-recordings" 
+                defaultChecked={assignment.submissionTypes.mediaRecordings}
+              />
+              <label htmlFor="wd-media-recordings">Media Recordings</label><br />
+              <input 
+                type="checkbox" 
+                id="wd-student-annotation" 
+                defaultChecked={assignment.submissionTypes.studentAnnotation}
+              />
+              <label htmlFor="wd-student-annotation">Student Annotation</label><br />
+              <input 
+                type="checkbox" 
+                id="wd-file-upload" 
+                defaultChecked={assignment.submissionTypes.fileUpload}
+              />
+              <label htmlFor="wd-file-upload">File Uploads</label>
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-assign-to">Assign to</label>
+            </td>
+            <td>
+              <input id="wd-assign-to" defaultValue={assignment.assignTo} />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-due-date">Due</label>
+            </td>
+            <td>
+              <input type="date" id="wd-due-date" defaultValue={assignment.dueDate} />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-available-from">Available from</label>
+            </td>
+            <td>
+              <input type="date" id="wd-available-from" defaultValue={assignment.availableFrom} />
+            </td>
+          </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-available-until">Until</label>
+            </td>
+            <td>
+              <input type="date" id="wd-available-until" defaultValue={assignment.availableUntil} />
+            </td>
+          </tr>
+        </tbody>
       </table>
       
       <br />
