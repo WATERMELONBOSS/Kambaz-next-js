@@ -5,7 +5,7 @@ export default function Labs() {
     <div id="wd-labs">
       <h1>Labs</h1>
       <p>Milan Srinivas</p>
-      <p>Section: CS5610 Web Development</p>
+      <p>Section: CS5610 Web Development Section 04</p>
       <a href="https://github.com/WATERMELONBOSS/Kambaz-next-js" id="wd-github">
         GitHub Repository
       </a>

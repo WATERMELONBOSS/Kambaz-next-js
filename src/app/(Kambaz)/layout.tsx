@@ -17,3 +17,4 @@ export default function KambazLayout({ children }: Readonly<{ children: ReactNod
     </table>
   );
 }
+
