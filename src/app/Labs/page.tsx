@@ -6,7 +6,7 @@ export default function Labs() {
       <h1>Labs</h1>
       <p>Milan Srinivas</p>
       <p>Section: CS5610 Web Development</p>
-      <a href="https://github.com/WATERMEONBOSS/kambaz-next-js" id="wd-github">
+      <a href="https://github.com/WATERMELONBOSS/Kambaz-next-js" id="wd-github">
         GitHub Repository
       </a>
       <br />

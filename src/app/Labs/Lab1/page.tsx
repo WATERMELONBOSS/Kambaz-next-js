@@ -245,7 +245,10 @@ export default function Lab1() {
       <a href="https://www.lipsum.com" id="wd-lipsum">click here</a>
       to get dummy text<br/>
       Check out the
-      <a href="https://github.com/WATERMEONBOSS" id="wd-github">source code</a>
+
+      <a href="https://github.com/WATERMELONBOSS/Kambaz-next-js" id="wd-github">
+      source code</a>
+
       for this project<br/>
     </div>
   );
