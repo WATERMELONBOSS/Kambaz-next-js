@@ -1,90 +1,89 @@
+"use client";
+
+import { Button, FormControl, InputGroup, ListGroup, ListGroupItem } from "react-bootstrap";
+import { FaPlus, FaSearch } from "react-icons/fa";
 import Link from "next/link";
 
-export default async function Assignments({ 
-  params 
-}: { 
-  params: Promise<{ cid: string }> 
-}) {
-  const { cid } = await params;
-  
+export default function Assignments() {
   return (
     <div id="wd-assignments">
-      <input placeholder="Search for Assignments" id="wd-search-assignment" />
-      <button id="wd-add-assignment-group">+ Group</button>
-      <button id="wd-add-assignment">+ Assignment</button>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <div className="w-50">
+          <InputGroup>
+            <InputGroup.Text>
+              <FaSearch />
+            </InputGroup.Text>
+            <FormControl placeholder="Search for Assignment" />
+          </InputGroup>
+        </div>
+        <div className="d-flex">
+          <Button variant="outline-secondary" className="me-2">
+            <FaPlus className="me-1" /> Group
+          </Button>
+          <Button variant="danger">
+            <FaPlus className="me-1" /> Assignment
+          </Button>
+        </div>
+      </div>
       
-      <h3 id="wd-assignments-title">
-        ASSIGNMENTS 40% of Total <button>+</button>
-      </h3>
-      <ul id="wd-assignment-list">
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Assignments/123`} className="wd-assignment-link">
-            A1 - ENV + HTML
-          </Link>
-          <br />
-          <span>Multiple Modules | Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 100 pts</span>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Assignments/124`} className="wd-assignment-link">
-            A2 - CSS + BOOTSTRAP
-          </Link>
-          <br />
-          <span>Multiple Modules | Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 100 pts</span>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Assignments/125`} className="wd-assignment-link">
-            A3 - JAVASCRIPT + REACT
-          </Link>
-          <br />
-          <span>Multiple Modules | Not available until May 20 at 12:00am | Due May 27 at 11:59pm | 100 pts</span>
-        </li>
-      </ul>
-      
-      <h3 id="wd-quizzes-title">
-        QUIZZES 10% of Total <button>+</button>
-      </h3>
-      <ul id="wd-quiz-list">
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Quizzes/201`} className="wd-assignment-link">
-            Q1 - HTML
-          </Link>
-          <br />
-          <span>Not available until May 6 at 12:00am | Due May 13 at 11:59pm | 30 pts</span>
-        </li>
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Quizzes/202`} className="wd-assignment-link">
-            Q2 - CSS
-          </Link>
-          <br />
-          <span>Not available until May 13 at 12:00am | Due May 20 at 11:59pm | 30 pts</span>
-        </li>
-      </ul>
-      
-      <h3 id="wd-exams-title">
-        EXAMS 20% of Total <button>+</button>
-      </h3>
-      <ul id="wd-exam-list">
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Exams/301`} className="wd-assignment-link">
-            Midterm
-          </Link>
-          <br />
-          <span>Not available until May 27 at 12:00am | Due May 28 at 11:59pm | 100 pts</span>
-        </li>
-      </ul>
-      
-      <h3 id="wd-project-title">
-        PROJECT 30% of Total <button>+</button>
-      </h3>
-      <ul id="wd-project-list">
-        <li className="wd-assignment-list-item">
-          <Link href={`/Courses/${cid}/Projects/401`} className="wd-assignment-link">
-            Final Project
-          </Link>
-          <br />
-          <span>Not available until May 6 at 12:00am | Due June 3 at 11:59pm | 100 pts</span>
-        </li>
-      </ul>
+      <ListGroup className="rounded-0">
+        <ListGroupItem className="wd-assignment-item">
+          <div className="d-flex align-items-center">
+            <div className="wd-assignment-icon me-3">
+              <i className="fas fa-file-alt fa-2x text-muted"></i>
+            </div>
+            <div className="flex-grow-1">
+              <Link href="/Courses/1234/Assignments/1" className="text-decoration-none">
+                <h5 className="mb-1">A1 - ENV + HTML</h5>
+              </Link>
+              <div className="text-muted small">
+                Multiple Modules | Not available until Sep 6 at 12:00am | Due Sep 18 at 11:59pm | 100 pts
+              </div>
+            </div>
+            <div className="wd-assignment-actions">
+              <Button variant="outline-secondary" size="sm" className="me-1">⋯</Button>
+            </div>
+          </div>
+        </ListGroupItem>
+        
+        <ListGroupItem className="wd-assignment-item">
+          <div className="d-flex align-items-center">
+            <div className="wd-assignment-icon me-3">
+              <i className="fas fa-file-alt fa-2x text-muted"></i>
+            </div>
+            <div className="flex-grow-1">
+              <Link href="/Courses/1234/Assignments/2" className="text-decoration-none">
+                <h5 className="mb-1">A2 - CSS + BOOTSTRAP</h5>
+              </Link>
+              <div className="text-muted small">
+                Multiple Modules | Not available until Sep 6 at 12:00am | Due Sep 18 at 11:59pm | 100 pts
+              </div>
+            </div>
+            <div className="wd-assignment-actions">
+              <Button variant="outline-secondary" size="sm" className="me-1">⋯</Button>
+            </div>
+          </div>
+        </ListGroupItem>
+        
+        <ListGroupItem className="wd-assignment-item">
+          <div className="d-flex align-items-center">
+            <div className="wd-assignment-icon me-3">
+              <i className="fas fa-file-alt fa-2x text-muted"></i>
+            </div>
+            <div className="flex-grow-1">
+              <Link href="/Courses/1234/Assignments/3" className="text-decoration-none">
+                <h5 className="mb-1">A3 - JAVASCRIPT + REACT</h5>
+              </Link>
+              <div className="text-muted small">
+                Multiple Modules | Not available until Sep 6 at 12:00am | Due Sep 18 at 11:59pm | 100 pts
+              </div>
+            </div>
+            <div className="wd-assignment-actions">
+              <Button variant="outline-secondary" size="sm" className="me-1">⋯</Button>
+            </div>
+          </div>
+        </ListGroupItem>
+      </ListGroup>
     </div>
   );
 }

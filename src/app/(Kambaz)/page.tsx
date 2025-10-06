@@ -4,3 +4,4 @@ export default function Kambaz() {
   redirect("/Account/Signin");
 }
 
+
