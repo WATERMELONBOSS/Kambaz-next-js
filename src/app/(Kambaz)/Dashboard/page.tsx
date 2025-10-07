@@ -79,7 +79,7 @@ export default function Dashboard() {
           <Col className="wd-dashboard-course" style={{ width: "300px" }}>
             <Card>
               <Link href="/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                <CardImg variant="top" src="/images/javascript.jpg" width="100%" height={160} />
+                <CardImg variant="top" src="/images/teslabot.jpg" width="100%" height={160} />
                 <CardBody>
                   <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
                     CS5678 JavaScript
@@ -95,7 +95,7 @@ export default function Dashboard() {
           <Col className="wd-dashboard-course" style={{ width: "300px" }}>
             <Card>
               <Link href="/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                <CardImg variant="top" src="/images/css.jpg" width="100%" height={160} />
+                <CardImg variant="top" src="/images/teslabot.jpg" width="100%" height={160} />
                 <CardBody>
                   <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS6789 CSS</CardTitle>
                   <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
@@ -109,7 +109,7 @@ export default function Dashboard() {
           <Col className="wd-dashboard-course" style={{ width: "300px" }}>
             <Card>
               <Link href="/Courses/1234/Home" className="wd-dashboard-course-link text-decoration-none text-dark">
-                <CardImg variant="top" src="/images/html.jpg" width="100%" height={160} />
+                <CardImg variant="top" src="/images/teslabot.jpg" width="100%" height={160} />
                 <CardBody>
                   <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS7890 HTML</CardTitle>
                   <CardText className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>

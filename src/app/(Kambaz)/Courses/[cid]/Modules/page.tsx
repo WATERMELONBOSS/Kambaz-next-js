@@ -9,7 +9,10 @@ import LessonControlButtons from "./LessonControlButtons";
 export default function Modules() {
   return (
     <div>
-      <ModulesControls /><br /><br /><br />
+      <ModulesControls />
+      <br />
+      <br />
+      <br />
       <ListGroup className="rounded-0" id="wd-modules">
         <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
           <div className="wd-title p-3 ps-2 bg-secondary">
@@ -44,6 +47,3 @@ export default function Modules() {
     </div>
   );
 }
-
-
-

@@ -5,97 +5,126 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 export default function AssignmentEditor() {
   return (
     <div id="wd-assignment-editor">
+      {/* This top section is unchanged */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
           <i className="fas fa-times text-danger me-2"></i>
           <span className="fw-bold">Assignment Name</span>
         </div>
         <div>
-          <Button variant="light" className="me-2">Edit</Button>
+          <Button variant="light" className="me-2">
+            Edit
+          </Button>
           <Button variant="light">Cancel</Button>
         </div>
       </div>
-      
+
       <Form>
+        {/* Assignment Name and Description are unchanged as requested */}
         <Form.Group className="mb-3">
           <Form.Label>Assignment Name</Form.Label>
           <Form.Control type="text" defaultValue="A1 - ENV + HTML" />
         </Form.Group>
-        
+
         <Form.Group className="mb-3">
           <Form.Label>Assignment Description</Form.Label>
-          <Form.Control as="textarea" rows={5} defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following:" />
+          <Form.Control
+            as="textarea"
+            rows={5}
+            defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following:"
+          />
         </Form.Group>
-        
-        <Row className="mb-3">
-          <Col md={6}>
-            <Form.Group>
-              <Form.Label>Points</Form.Label>
-              <Form.Control type="number" defaultValue="100" />
-            </Form.Group>
+
+        {/* --- Start of Rearranged Fields --- */}
+
+        <Form.Group as={Row} className="mb-3" controlId="formPoints">
+          <Form.Label column sm={3} className="text-end">
+            Points
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control type="number" defaultValue="100" />
           </Col>
-          <Col md={6}>
-            <Form.Group>
-              <Form.Label>Assignment Group</Form.Label>
-              <Form.Select defaultValue="ASSIGNMENTS">
-                <option>ASSIGNMENTS</option>
-                <option>EXAMS</option>
-                <option>PROJECT</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-        </Row>
-        
-        <Row className="mb-3">
-          <Col md={6}>
-            <Form.Group>
-              <Form.Label>Display Grade as</Form.Label>
-              <Form.Select defaultValue="Percentage">
-                <option>Percentage</option>
-                <option>Points</option>
-                <option>Letter Grade</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-          <Col md={6}>
-            <Form.Group>
-              <Form.Label>Submission Type</Form.Label>
-              <Form.Select defaultValue="Online">
-                <option>Online</option>
-                <option>Offline</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-        </Row>
-        
-        <Form.Group className="mb-3">
-          <Form.Label>Assign</Form.Label>
-          <Form.Control type="text" defaultValue="Everyone" />
         </Form.Group>
-        
-        <Row className="mb-3">
-          <Col md={4}>
-            <Form.Group>
-              <Form.Label>Due</Form.Label>
-              <Form.Control type="date" defaultValue="2024-12-31" />
-            </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formAssignmentGroup">
+          <Form.Label column sm={3} className="text-end">
+            Assignment Group
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Select defaultValue="ASSIGNMENTS">
+              <option>ASSIGNMENTS</option>
+              <option>EXAMS</option>
+              <option>PROJECT</option>
+            </Form.Select>
           </Col>
-          <Col md={4}>
-            <Form.Group>
-              <Form.Label>Available from</Form.Label>
-              <Form.Control type="date" defaultValue="2024-01-01" />
-            </Form.Group>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formDisplayGrade">
+          <Form.Label column sm={3} className="text-end">
+            Display Grade as
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Select defaultValue="Percentage">
+              <option>Percentage</option>
+              <option>Points</option>
+              <option>Letter Grade</option>
+            </Form.Select>
           </Col>
-          <Col md={4}>
-            <Form.Group>
-              <Form.Label>Until</Form.Label>
-              <Form.Control type="date" defaultValue="2024-12-31" />
-            </Form.Group>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formSubmissionType">
+          <Form.Label column sm={3} className="text-end">
+            Submission Type
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Select defaultValue="Online">
+              <option>Online</option>
+              <option>Offline</option>
+            </Form.Select>
           </Col>
-        </Row>
-        
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formAssign">
+          <Form.Label column sm={3} className="text-end">
+            Assign
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control type="text" defaultValue="Everyone" />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formDue">
+          <Form.Label column sm={3} className="text-end">
+            Due
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control type="date" defaultValue="2024-12-31" />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formAvailableFrom">
+          <Form.Label column sm={3} className="text-end">
+            Available from
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control type="date" defaultValue="2024-01-01" />
+          </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} className="mb-3" controlId="formUntil">
+          <Form.Label column sm={3} className="text-end">
+            Until
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control type="date" defaultValue="2024-12-31" />
+          </Col>
+        </Form.Group>
+
+        {/* This bottom section is unchanged */}
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2">Cancel</Button>
+          <Button variant="secondary" className="me-2">
+            Cancel
+          </Button>
           <Button variant="success">Save</Button>
         </div>
       </Form>
