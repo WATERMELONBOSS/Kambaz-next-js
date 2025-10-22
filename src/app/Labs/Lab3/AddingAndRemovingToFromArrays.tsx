@@ -1,8 +1,8 @@
 export default function AddingAndRemovingToFromArrays() {
-  let numberArray1 = [1, 2, 3, 4, 5];
-  let stringArray1 = ["string1", "string2"];
+  const numberArray1 = [1, 2, 3, 4, 5];
+  const stringArray1 = ["string1", "string2"];
   // eslint-disable-next-line react/jsx-key
-  let todoArray = [<li>Buy milk</li>, <li>Feed the pets</li>];
+  const todoArray = [<li>Buy milk</li>, <li>Feed the pets</li>];
   numberArray1.push(6); // adding new items
   stringArray1.push("string3");
   todoArray.push(<li>Walk the dogs</li>);
