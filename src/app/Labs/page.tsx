@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export default function Labs() {
+  console.log("Hello World");
   return (
     <div id="wd-labs">
       <h1>Labs</h1>

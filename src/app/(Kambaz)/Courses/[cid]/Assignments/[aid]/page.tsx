@@ -1,11 +1,16 @@
 "use client";
 
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useParams } from "next/navigation";
+import * as db from "../../../../Database";
+import Link from "next/link";
+import { link } from "fs";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = db.assignments.find((a) => a._id === aid && a.course === cid);
   return (
     <div id="wd-assignment-editor">
-      {/* This top section is unchanged */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div>
           <i className="fas fa-times text-danger me-2"></i>
@@ -20,10 +25,9 @@ export default function AssignmentEditor() {
       </div>
 
       <Form>
-        {/* Assignment Name and Description are unchanged as requested */}
         <Form.Group className="mb-3">
           <Form.Label>Assignment Name</Form.Label>
-          <Form.Control type="text" defaultValue="A1 - ENV + HTML" />
+          <Form.Control type="text" defaultValue={assignment?.title} />
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -34,8 +38,6 @@ export default function AssignmentEditor() {
             defaultValue="The assignment is available online. Submit a link to the landing page of your Web application running on Netlify. The landing page should include the following:"
           />
         </Form.Group>
-
-        {/* --- Start of Rearranged Fields --- */}
 
         <Form.Group as={Row} className="mb-3" controlId="formPoints">
           <Form.Label column sm={3} className="text-end">
@@ -120,12 +122,13 @@ export default function AssignmentEditor() {
           </Col>
         </Form.Group>
 
-        {/* This bottom section is unchanged */}
         <div className="d-flex justify-content-end">
-          <Button variant="secondary" className="me-2">
+          <Button variant="secondary" className="me-2" href={`/Courses/${cid}/Assignments/`}>
             Cancel
           </Button>
-          <Button variant="success">Save</Button>
+          <Button variant="success" href={`/Courses/${cid}/Assignments/`}>
+            Save
+          </Button>
         </div>
       </Form>
     </div>

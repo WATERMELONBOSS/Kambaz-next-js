@@ -7,8 +7,13 @@ import Link from "next/link";
 import ModuleControlButtons from "../Modules/ModuleControlButtons";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { MdArrowDropDown } from "react-icons/md";
+import { usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
+import * as db from "../../../Database";
 
 export default function Assignments() {
+  const { cid } = useParams();
+  const courseAssignments = db.assignments.filter((assignment) => assignment.course === cid);
   return (
     <div id="wd-assignments">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -43,60 +48,28 @@ export default function Assignments() {
           </div>
 
           <ListGroup className="wd-lessons rounded-0">
-            <ListGroupItem className="wd-lesson p-3 ps-1">
-              <div className="d-flex align-items-center">
-                <BsGripVertical className="me-2 fs-3" />
-                <div className="wd-assignment-icon me-3">
-                  <i className="fas fa-file-alt fa-2x text-success"></i>
-                </div>
-                <div className="flex-grow-1">
-                  <Link href="/Courses/1234/Assignments/1" className="text-decoration-none text-dark">
-                    <h5 className="mb-1">A1 - ENV + HTML</h5>
-                  </Link>
-                  <div className="text-muted small">
-                    Multiple Modules | <strong>Not available until</strong> Sep 6 at 12:00am | <strong>Due</strong> Sep
-                    18 at 11:59pm | 100 pts
+            {courseAssignments.map((assignment) => (
+              <ListGroupItem key={assignment._id} className="wd-lesson p-3 ps-1">
+                <div className="d-flex align-items-center">
+                  <BsGripVertical className="me-2 fs-3" />
+                  <div className="wd-assignment-icon me-3">
+                    <i className="fas fa-file-alt fa-2x text-success"></i>
                   </div>
-                </div>
-                <LessonControlButtons />
-              </div>
-            </ListGroupItem>
-            <ListGroupItem className="wd-lesson p-3 ps-1">
-              <div className="d-flex align-items-center">
-                <BsGripVertical className="me-2 fs-3" />
-                <div className="wd-assignment-icon me-3">
-                  <i className="fas fa-file-alt fa-2x text-success"></i>
-                </div>
-                <div className="flex-grow-1">
-                  <Link href="/Courses/1234/Assignments/2" className="text-decoration-none text-dark">
-                    <h5 className="mb-1">A2 - CSS + BOOTSTRAP</h5>
-                  </Link>
-                  <div className="text-muted small">
-                    Multiple Modules | <strong>Not available until</strong> Sep 6 at 12:00am | <strong>Due</strong> Sep
-                    18 at 11:59pm | 100 pts
+                  <div className="flex-grow-1">
+                    <Link
+                      href={`/Courses/${assignment.course}/Assignments/${assignment._id}`}
+                      className="text-decoration-none text-dark">
+                      <h5 className="mb-1">{assignment.title}</h5>
+                    </Link>
+                    <div className="text-muted small">
+                      Multiple Modules | <strong>Not available until</strong> Sep 6 at 12:00am | <strong>Due</strong>{" "}
+                      Sep 18 at 11:59pm | 100 pts
+                    </div>
                   </div>
+                  <LessonControlButtons />
                 </div>
-                <LessonControlButtons />
-              </div>
-            </ListGroupItem>
-            <ListGroupItem className="wd-lesson p-3 ps-1">
-              <div className="d-flex align-items-center">
-                <BsGripVertical className="me-2 fs-3" />
-                <div className="wd-assignment-icon me-3">
-                  <i className="fas fa-file-alt fa-2x text-success"></i>
-                </div>
-                <div className="flex-grow-1">
-                  <Link href="/Courses/1234/Assignments/3" className="text-decoration-none text-dark">
-                    <h5 className="mb-1">A3 - JAVASCRIPT + REACT</h5>
-                  </Link>
-                  <div className="text-muted small">
-                    Multiple Modules | <strong>Not available until</strong> Sep 6 at 12:00am | <strong>Due</strong> Sep
-                    18 at 11:59pm | 100 pts
-                  </div>
-                </div>
-                <LessonControlButtons />
-              </div>
-            </ListGroupItem>
+              </ListGroupItem>
+            ))}
           </ListGroup>
         </ListGroupItem>
         <ListGroupItem className="wd-module p-0 mb-5 fs-5 border-gray">
