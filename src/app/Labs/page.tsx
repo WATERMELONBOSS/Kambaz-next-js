@@ -29,6 +29,11 @@ export default function Labs() {
           </Link>
         </li>
         <li>
+          <Link href="/Labs/Lab4" id="wd-lab4-link">
+            Lab 4: State Management with Redux
+          </Link>
+        </li>
+        <li>
           <Link href="/" id="wd-kambaz-link">
             Kambaz Application
           </Link>
