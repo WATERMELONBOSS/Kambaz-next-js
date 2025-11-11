@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNewCourse, deleteCourse, updateCourse } from "../Courses/reducer";
 import { enrollInCourse, unenrollFromCourse } from "../Enrollments/reducer";
 import { RootState } from "../store";
-import * as db from "../Database";
 
 export default function Dashboard() {
   const { courses } = useSelector((state: RootState) => state.coursesReducer);

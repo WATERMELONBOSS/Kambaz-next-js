@@ -7,7 +7,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { addAssignment, updateAssignment } from "../reducer";
 import { RootState } from "../../../../store";
-import * as db from "../../../../Database";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -30,10 +29,19 @@ export default function AssignmentEditor() {
     if (aid && aid !== "new") {
       const existingAssignment = assignments.find((a: any) => a._id === aid);
       if (existingAssignment) {
-        setAssignment(existingAssignment);
+        setAssignment({
+          _id: existingAssignment._id,
+          title: existingAssignment.title || "",
+          description: (existingAssignment as any).description || "",
+          points: (existingAssignment as any).points || 100,
+          dueDate: (existingAssignment as any).dueDate || "",
+          availableFrom: (existingAssignment as any).availableFrom || "",
+          availableUntil: (existingAssignment as any).availableUntil || "",
+          course: existingAssignment.course || cid
+        });
       }
     }
-  }, [aid, assignments]);
+  }, [aid, assignments, cid]);
 
   const handleSave = () => {
     if (aid && aid !== "new") {
