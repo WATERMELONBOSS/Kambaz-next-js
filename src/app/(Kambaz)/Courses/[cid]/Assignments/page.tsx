@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, FormControl, InputGroup, ListGroup, ListGroupItem, Modal } from "react-bootstrap";
 import { FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import { BsGripVertical } from "react-icons/bs";
@@ -9,7 +9,8 @@ import Link from "next/link";
 import { MdArrowDropDown } from "react-icons/md";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment } from "./reducer";
+import { deleteAssignment, setAssignments } from "./reducer";
+import * as client from "./client";
 import { RootState } from "../../../store";
 
 export default function Assignments() {
@@ -23,14 +24,32 @@ export default function Assignments() {
 
   const courseAssignments = assignments.filter((assignment: any) => assignment.course === cid);
 
+  useEffect(() => {
+    async function load() {
+      if (!cid) return;
+      try {
+        const mods = await client.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(mods));
+      } catch (e) {
+        console.error("Failed to load assignments", e);
+      }
+    }
+    load();
+  }, [cid, dispatch]);
+
   const handleDeleteClick = (assignmentId: string) => {
     setAssignmentToDelete(assignmentId);
     setShowDeleteModal(true);
   };
 
-  const confirmDelete = () => {
+  const confirmDelete = async () => {
     if (assignmentToDelete) {
-      dispatch(deleteAssignment(assignmentToDelete));
+      try {
+        await client.deleteAssignment(assignmentToDelete);
+        dispatch(deleteAssignment(assignmentToDelete));
+      } catch (e) {
+        console.error("Failed to delete assignment", e);
+      }
     }
     setShowDeleteModal(false);
     setAssignmentToDelete(null);

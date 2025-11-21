@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Row, Col, Card, CardImg, CardBody, CardTitle, CardText, Button, FormControl } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewCourse, deleteCourse, updateCourse } from "../Courses/reducer";
+import * as client from "../Courses/client";
+import { setCourses } from "../Courses/reducer";
 import { enrollInCourse, unenrollFromCourse } from "../Enrollments/reducer";
 import { RootState } from "../store";
 
@@ -41,25 +41,42 @@ export default function Dashboard() {
       dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
     }
   };
-
   const getDisplayedCourses = () => {
     if (!currentUser) return [];
-
-    if (showAllCourses) {
-      return courses;
-    } else {
-      return courses.filter((course: any) =>
-        enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id)
-      );
-    }
+    return courses;
   };
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let fetched = [];
+        if (showAllCourses) {
+          fetched = await client.fetchAllCourses();
+        } else {
+          // if no current user, show nothing
+          if (!currentUser) {
+            dispatch(setCourses([]));
+            return;
+          }
+          fetched = await client.findMyCourses();
+        }
+        dispatch(setCourses(fetched));
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, [currentUser, showAllCourses, dispatch]);
 
   return (
     <div id="wd-dashboard">
       <div className="d-flex justify-content-between align-items-center">
         <h1 id="wd-dashboard-title">Dashboard</h1>
         {currentUser && (
-          <Button variant="primary" onClick={() => setShowAllCourses(!showAllCourses)}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              setShowAllCourses(!showAllCourses);
+            }}>
             {showAllCourses ? "My Courses" : "All Courses"}
           </Button>
         )}
@@ -69,13 +86,27 @@ export default function Dashboard() {
         <button
           className="btn btn-primary float-end"
           id="wd-add-new-course-click"
-          onClick={() => dispatch(addNewCourse(course))}>
+          onClick={async () => {
+            try {
+              const newCourse = await client.createCourse(course);
+              dispatch(setCourses([...courses, newCourse]));
+            } catch (err) {
+              console.error(err);
+            }
+          }}>
           {" "}
           Add{" "}
         </button>
         <button
           className="btn btn-warning float-end me-2"
-          onClick={() => dispatch(updateCourse(course))}
+          onClick={async () => {
+            try {
+              const updated = await client.updateCourse(course);
+              dispatch(setCourses(courses.map((c: any) => (c._id === updated._id ? updated : c))));
+            } catch (err) {
+              console.error(err);
+            }
+          }}
           id="wd-update-course-click">
           Update{" "}
         </button>
@@ -153,7 +184,14 @@ export default function Dashboard() {
                           <button
                             onClick={(event) => {
                               event.preventDefault();
-                              dispatch(deleteCourse(course._id));
+                              (async () => {
+                                try {
+                                  await client.deleteCourse(course._id);
+                                  dispatch(setCourses(courses.filter((c: any) => c._id !== course._id)));
+                                } catch (err) {
+                                  console.error(err);
+                                }
+                              })();
                             }}
                             className="btn btn-danger btn-sm"
                             id="wd-delete-course-click">

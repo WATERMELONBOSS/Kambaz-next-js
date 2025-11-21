@@ -4,17 +4,26 @@ import { redirect } from "next/navigation";
 import { setCurrentUser } from "../reducer";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import * as db from "../../Database";
 import { FormControl, Button } from "react-bootstrap";
+import * as client from "../client";
+import { useRouter } from "next/navigation";
 
 export default function Signin() {
   const [credentials, setCredentials] = useState<any>({});
   const dispatch = useDispatch();
-  const signin = () => {
-    const user = db.users.find((u: any) => u.username === credentials.username && u.password === credentials.password);
-    if (!user) return;
-    dispatch(setCurrentUser(user));
-    redirect("/Dashboard");
+  const router = useRouter();
+  const signin = async () => {
+    try {
+      const user = await client.signin(credentials);
+      if (!user) return;
+      dispatch(setCurrentUser(user));
+      // navigate to dashboard
+      router.push("/Dashboard");
+    } catch (err: any) {
+      // show error in console and optionally to user
+      console.error(err);
+      alert(err?.response?.data?.message || err.message || "Signin failed");
+    }
   };
   return (
     <div id="wd-signin-screen">

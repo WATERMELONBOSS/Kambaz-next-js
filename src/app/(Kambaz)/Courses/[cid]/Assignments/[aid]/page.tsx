@@ -1,18 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { addAssignment, updateAssignment } from "../reducer";
+import { setAssignments } from "../reducer";
+import * as client from "../client";
 import { RootState } from "../../../../store";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const router = useRouter();
   const dispatch = useDispatch();
-  const { assignments } = useSelector((state: RootState) => state.assignmentsReducer);
+  const assignments = useSelector((state: RootState) => state.assignmentsReducer.assignments as any[]);
 
   const [assignment, setAssignment] = useState({
     _id: "",
@@ -44,12 +44,20 @@ export default function AssignmentEditor() {
   }, [aid, assignments, cid]);
 
   const handleSave = () => {
-    if (aid && aid !== "new") {
-      dispatch(updateAssignment(assignment));
-    } else {
-      dispatch(addAssignment(assignment));
-    }
-    router.push(`/Courses/${cid}/Assignments`);
+    (async function save() {
+      try {
+        if (aid && aid !== "new") {
+          await client.updateAssignment(assignment);
+        } else {
+          await client.createAssignmentForCourse(cid as string, assignment);
+        }
+        const latest = await client.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(latest));
+        router.push(`/Courses/${cid}/Assignments`);
+      } catch (e) {
+        console.error("Failed to save assignment", e);
+      }
+    })();
   };
 
   const handleCancel = () => {

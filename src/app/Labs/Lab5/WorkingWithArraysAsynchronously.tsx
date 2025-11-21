@@ -16,8 +16,12 @@ export default function WorkingWithArraysAsynchronously() {
     fetchTodos();
   }, []);
   const removeTodo = async (todo: any) => {
-    const updatedTodos = await client.removeTodo(todo);
-    setTodos(updatedTodos);
+    try {
+      const updatedTodos = await client.removeTodo(todo);
+      setTodos(updatedTodos);
+    } catch (error) {
+      setErrorMessage("Error removing todo");
+    }
   };
   const createNewTodo = async () => {
     const todos = await client.createNewTodo();

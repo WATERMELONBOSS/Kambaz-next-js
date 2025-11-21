@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../../../kambaz-node-server-app"
+		}
+	],
+	"settings": {}
+}
