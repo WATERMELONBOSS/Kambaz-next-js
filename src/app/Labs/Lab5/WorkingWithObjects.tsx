@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { FormControl } from "react-bootstrap";
-const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER || "http://localhost:4000";
+const ENV_HTTP = process.env.NEXT_PUBLIC_HTTP_SERVER;
+const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "");
 export default function WorkingWithObjects() {
   const [assignment, setAssignment] = useState({
     id: 1,

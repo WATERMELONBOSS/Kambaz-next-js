@@ -1,10 +1,12 @@
 import axios from "axios";
-const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER || "http://localhost:4000";
+const ENV_HTTP = process.env.NEXT_PUBLIC_HTTP_SERVER;
+const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "");
+const BASE_API = HTTP_SERVER ? HTTP_SERVER : "";
 export const fetchWelcomeMessage = async () => {
-  const response = await axios.get(`${HTTP_SERVER}/lab5/welcome`);
+  const response = await axios.get(`${BASE_API}/lab5/welcome`);
   return response.data;
 };
-const ASSIGNMENT_API = `${HTTP_SERVER}/lab5/assignment`;
+const ASSIGNMENT_API = `${BASE_API}/lab5/assignment`;
 export const fetchAssignment = async () => {
   const response = await axios.get(`${ASSIGNMENT_API}`);
   return response.data;
