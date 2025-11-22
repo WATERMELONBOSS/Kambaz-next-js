@@ -5,7 +5,8 @@ import { Row, Col, Card, CardImg, CardBody, CardTitle, CardText, Button, FormCon
 import { useDispatch, useSelector } from "react-redux";
 import * as client from "../Courses/client";
 import { setCourses } from "../Courses/reducer";
-import { enrollInCourse, unenrollFromCourse } from "../Enrollments/reducer";
+import * as enrollClient from "../Enrollments/client";
+import { setEnrollments } from "../Enrollments/reducer";
 import { RootState } from "../store";
 
 export default function Dashboard() {
@@ -30,15 +31,23 @@ export default function Dashboard() {
     );
   };
 
-  const handleEnroll = (courseId: string) => {
-    if (currentUser) {
-      dispatch(enrollInCourse({ userId: currentUser._id, courseId }));
+  const handleEnroll = async (courseId: string) => {
+    if (!currentUser) return;
+    try {
+      const created = await enrollClient.enrollUserInCourse(courseId, currentUser._id);
+      dispatch(setEnrollments([...enrollments, created]));
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  const handleUnenroll = (courseId: string) => {
-    if (currentUser) {
-      dispatch(unenrollFromCourse({ userId: currentUser._id, courseId }));
+  const handleUnenroll = async (courseId: string) => {
+    if (!currentUser) return;
+    try {
+      await enrollClient.unenrollUserFromCourse(courseId, currentUser._id);
+      dispatch(setEnrollments(enrollments.filter((e: any) => !(e.user === currentUser._id && e.course === courseId))));
+    } catch (err) {
+      console.error(err);
     }
   };
   const getDisplayedCourses = () => {
