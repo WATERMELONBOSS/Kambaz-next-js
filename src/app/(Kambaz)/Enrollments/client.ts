@@ -22,6 +22,8 @@ export const deleteEnrollment = async (enrollmentId: string) => {
 };
 
 export const unenrollUserFromCourse = async (courseId: string, userId: string) => {
-  const { data } = await axiosWithCredentials.delete(`${COURSES_API}/${courseId}/enrollments`, { data: { user: userId } });
+  const { data } = await axiosWithCredentials.delete(`${COURSES_API}/${courseId}/enrollments`, {
+    data: { user: userId }
+  });
   return data;
 };

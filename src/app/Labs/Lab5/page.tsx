@@ -20,11 +20,11 @@ export default function Lab5() {
       <hr />
       <PathParameters />
       <QueryParameters />
-  <WorkingWithObjects />
-  <WorkingWithObjectsAsynchronously />
-  <WorkingWithArrays />
-  <WorkingWithArraysAsynchronously />
-  <HttpClient />
+      <WorkingWithObjects />
+      <WorkingWithObjectsAsynchronously />
+      <WorkingWithArrays />
+      <WorkingWithArraysAsynchronously />
+      <HttpClient />
       <EnvironmentVariables />
     </div>
   );
