@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { FormControl } from "react-bootstrap";
-const ENV_HTTP = process.env.NEXT_PUBLIC_HTTP_SERVER;
-const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "");
+const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER;
 export default function QueryParameters() {
   const [a, setA] = useState("34");
   const [b, setB] = useState("23");
@@ -24,28 +23,16 @@ export default function QueryParameters() {
         onChange={(e) => setB(e.target.value)}
       />
       <a
-        className="btn btn-primary me-2"
         id="wd-query-parameter-add"
-        href={`${HTTP_SERVER}/lab5/calculator?operation=add&a=${a}&b=${b}`}>
+        href={`${HTTP_SERVER}/lab5/calculator?operation=add&a=${a}&b=${b}`}
+      >
         Add {a} + {b}
       </a>
       <a
-        className="btn btn-primary me-2 btn-danger"
         id="wd-query-parameter-subtract"
-        href={`${HTTP_SERVER}/lab5/calculator?operation=subtract&a=${a}&b=${b}`}>
+        href={`${HTTP_SERVER}/lab5/calculator?operation=subtract&a=${a}&b=${b}`}
+      >
         Substract {a} - {b}
-      </a>
-      <a
-        className="btn btn-primary me-2"
-        id="wd-query-parameter-multiply"
-        href={`${HTTP_SERVER}/lab5/calculator?operation=multiply&a=${a}&b=${b}`}>
-        Multiply {a} * {b}
-      </a>
-      <a
-        className="btn btn-primary me-2"
-        id="wd-query-parameter-divide"
-        href={`${HTTP_SERVER}/lab5/calculator?operation=divide&a=${a}&b=${b}`}>
-        Divide {a} / {b}
       </a>
       <hr />
     </div>

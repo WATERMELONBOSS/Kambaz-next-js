@@ -1,13 +1,7 @@
 import EnvironmentVariables from "./EnvironmentVariables";
 import PathParameters from "./PathParameters";
 import QueryParameters from "./QueryParameters";
-import WorkingWithObjects from "./WorkingWithObjects";
-import WorkingWithArrays from "./WorkingWithArrays";
-import HttpClient from "./HttpClient";
-import WorkingWithObjectsAsynchronously from "./WorkingWithObjectsAsynchronously";
-import WorkingWithArraysAsynchronously from "./WorkingWithArraysAsynchronously";
-const ENV_HTTP = process.env.NEXT_PUBLIC_HTTP_SERVER;
-const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "");
+const HTTP_SERVER = process.env.NEXT_PUBLIC_HTTP_SERVER;
 export default function Lab5() {
   return (
     <div id="wd-lab5">
@@ -20,11 +14,6 @@ export default function Lab5() {
       <hr />
       <PathParameters />
       <QueryParameters />
-  <WorkingWithObjects />
-  <WorkingWithObjectsAsynchronously />
-  <WorkingWithArrays />
-  <WorkingWithArraysAsynchronously />
-  <HttpClient />
       <EnvironmentVariables />
     </div>
   );
