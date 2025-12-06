@@ -1,8 +1,8 @@
 import axios from "axios";
 const axiosWithCredentials = axios.create({ withCredentials: true });
 const ENV_HTTP = process.env.NEXT_PUBLIC_HTTP_SERVER;
-const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "");
-const USERS_API = `${HTTP_SERVER ? HTTP_SERVER : ""}/api/users`;
+const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http://localhost:4000" : "https://kambaz-node-server-app-s1zx.onrender.com");
+const USERS_API = `${HTTP_SERVER}/api/users`;
 
 export const signin = async (credentials: any) => {
   const response = await axiosWithCredentials.post(`${USERS_API}/signin`, credentials);
