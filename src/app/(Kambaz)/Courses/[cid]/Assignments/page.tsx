@@ -45,7 +45,7 @@ export default function Assignments() {
   const confirmDelete = async () => {
     if (assignmentToDelete) {
       try {
-        await client.deleteAssignment(assignmentToDelete);
+        await client.deleteAssignment(cid as string, assignmentToDelete);
         dispatch(deleteAssignment(assignmentToDelete));
       } catch (e) {
         console.error("Failed to delete assignment", e);

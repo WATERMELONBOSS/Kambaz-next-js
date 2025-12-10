@@ -69,7 +69,7 @@ export default function Modules() {
                     if (e.key === "Enter") {
                       try {
                         const updated = { ...module, editing: false };
-                        await client.updateModule(updated);
+                        await client.updateModule(cid as string, updated);
                         const newModules = modules.map((m: any) => (m._id === updated._id ? updated : m));
                         dispatch(setModules(newModules));
                       } catch (err) {
@@ -84,7 +84,7 @@ export default function Modules() {
                 moduleId={module._id}
                 deleteModule={async (moduleId) => {
                   try {
-                    await client.deleteModule(moduleId);
+                    await client.deleteModule(cid as string, moduleId);
                     dispatch(setModules(modules.filter((m: any) => m._id !== moduleId)));
                   } catch (err) {
                     console.error(err);

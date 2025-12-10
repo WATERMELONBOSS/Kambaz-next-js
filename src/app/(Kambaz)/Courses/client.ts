@@ -5,7 +5,6 @@ const HTTP_SERVER = ENV_HTTP || (process.env.NODE_ENV === "development" ? "http:
 const BASE_API = HTTP_SERVER;
 const COURSES_API = `${BASE_API}/api/courses`;
 const USERS_API = `${BASE_API}/api/users`;
-const MODULES_API = `${BASE_API}/api/modules`;
 
 export const fetchAllCourses = async () => {
   const { data } = await axios.get(COURSES_API);
@@ -42,12 +41,12 @@ export const createModuleForCourse = async (courseId: string, module: any) => {
   return response.data;
 };
 
-export const deleteModule = async (moduleId: string) => {
-  const response = await axios.delete(`${MODULES_API}/${moduleId}`);
+export const deleteModule = async (courseId: string, moduleId: string) => {
+  const response = await axios.delete(`${COURSES_API}/${courseId}/modules/${moduleId}`);
   return response.data;
 };
 
-export const updateModule = async (module: any) => {
-  const { data } = await axios.put(`${MODULES_API}/${module._id}`, module);
+export const updateModule = async (courseId: string, module: any) => {
+  const { data } = await axios.put(`${COURSES_API}/${courseId}/modules/${module._id}`, module);
   return data;
 };

@@ -47,7 +47,7 @@ export default function AssignmentEditor() {
     (async function save() {
       try {
         if (aid && aid !== "new") {
-          await client.updateAssignment(assignment);
+          await client.updateAssignment(cid as string, assignment);
         } else {
           await client.createAssignmentForCourse(cid as string, assignment);
         }
