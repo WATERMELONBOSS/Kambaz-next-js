@@ -15,7 +15,7 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const [showAllCourses, setShowAllCourses] = useState(false);
   const [course, setCourse] = useState<any>({
-    _id: "0",
+    _id: "",
     name: "New Course",
     number: "New Number",
     startDate: "2023-09-10",
@@ -69,7 +69,19 @@ export default function Dashboard() {
         <button
           className="btn btn-primary float-end"
           id="wd-add-new-course-click"
-          onClick={() => dispatch(addNewCourse(course))}>
+          onClick={() => {
+            const newCourse = { ...course, _id: "" };
+            dispatch(addNewCourse(newCourse));
+            setCourse({
+              _id: "",
+              name: "New Course",
+              number: "New Number",
+              startDate: "2023-09-10",
+              endDate: "2023-12-15",
+              image: "/images/reactjs.jpg",
+              description: "New Description"
+            });
+          }}>
           {" "}
           Add{" "}
         </button>

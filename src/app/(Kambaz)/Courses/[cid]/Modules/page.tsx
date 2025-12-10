@@ -42,13 +42,13 @@ export default function Modules() {
                 {module.editing && (
                   <FormControl
                     className="w-50 d-inline-block"
+                    value={module.name}
                     onChange={(e) => dispatch(updateModule({ ...module, name: e.target.value }))}
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         dispatch(updateModule({ ...module, editing: false }));
                       }
                     }}
-                    defaultValue={module.name}
                   />
                 )}
                 <ModuleControlButtons
